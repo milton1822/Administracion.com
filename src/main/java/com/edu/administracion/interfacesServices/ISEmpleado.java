@@ -10,5 +10,5 @@ public interface ISEmpleado {
 	public Optional<Empleado>listarId(int id);
 	public Empleado guardar(Empleado c);
 	public void delete(int id);
-	public Empleado buscarxId(int id);
+	public Empleado buscarId(int id);
 }

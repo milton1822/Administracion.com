@@ -6,31 +6,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.edu.administracion.interfaces.IEmpleado;
-import com.edu.administracion.interfacesServices.ISEmpleado;
-import com.edu.administracion.modelo.Empleado;
+import com.edu.administracion.interfaces.IPago;
+import com.edu.administracion.interfacesServices.ISPago;
+import com.edu.administracion.modelo.Pago;
 
 @Service
-public class ServiceEmpleado implements ISEmpleado{
-
-	@Autowired
-	private IEmpleado data;
+public class ServicePago implements ISPago{
 	
+	@Autowired
+	private IPago data;
+
 	@Override
 	@Transactional(readOnly = true)
-	public Iterable<Empleado> listarE() {
+	public Iterable<Pago> listar() {
 		return data.findAll();
 	}
 
 	@Override
-	public Optional<Empleado> listarId(int id) {
+	public Optional<Pago> listarId(int id) {
 		return data.findById(id);
 	}
 
 	@Override
 	@Transactional
-	public Empleado guardar(Empleado c) {
-		return data.save(c);
+	public Pago guardar(Pago pago) {
+		return data.save(pago);
 	}
 
 	@Override
@@ -40,8 +40,10 @@ public class ServiceEmpleado implements ISEmpleado{
 	}
 
 	@Override
-	public Empleado buscarId(int id) {
+	public Pago buscarId(int id) {
 		return data.findById(id).get();
 	}
+
+	
 
 }

@@ -3,10 +3,9 @@ package com.edu.administracion.interfaces;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.edu.administracion.modelo.Administrador;
+import com.edu.administracion.modelo.Pago;
 
 @Repository
-public interface IAdministrador extends JpaRepository<Administrador, Integer>{
-
+public interface IPago extends JpaRepository<Pago, Integer>{
 
 }

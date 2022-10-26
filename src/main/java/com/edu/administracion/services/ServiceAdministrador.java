@@ -10,6 +10,7 @@ import com.edu.administracion.interfaces.IAdministrador;
 import com.edu.administracion.interfacesServices.ISAdministrador;
 import com.edu.administracion.modelo.Administrador;
 
+
 @Service
 public class ServiceAdministrador implements ISAdministrador{
 	
@@ -29,12 +30,6 @@ public class ServiceAdministrador implements ISAdministrador{
 
 	@Override
 	@Transactional
-	public Administrador guardar(Administrador a) {
-		return data.save(a);
-	}
-
-	@Override
-	@Transactional
 	public void delete(int id) {
 		data.deleteById(id);
 	}
@@ -44,4 +39,9 @@ public class ServiceAdministrador implements ISAdministrador{
 		return data.findById(id).get();
 	}
 
+	public Administrador guardar(Administrador a) {
+		return data.save(a);
+	}
+
+	
 }

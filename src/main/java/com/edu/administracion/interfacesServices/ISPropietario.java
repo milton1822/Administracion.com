@@ -9,5 +9,5 @@ public interface ISPropietario {
 	public Optional<Propietario>listarId(int id);
 	public Propietario guardar(Propietario c);
 	public void delete(int id);
-	public Propietario buscarxId(int id);
+	public Propietario buscarId(int id);
 }

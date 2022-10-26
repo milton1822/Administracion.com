@@ -12,41 +12,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.edu.administracion.interfaces.IAdministrador;
-import com.edu.administracion.modelo.Administrador;
-
+import com.edu.administracion.interfaces.I_Inmueble;
+import com.edu.administracion.modelo.Inmueble;
 
 @RestController
-@RequestMapping("/administrador")
-public class AdministradorController {
+@RequestMapping("/inmueble")
+public class InmuebleController {
 	
 	@Autowired
-	private IAdministrador service;
-	
+	private I_Inmueble service;
 	
 	@GetMapping("/listar")
-	public Iterable<Administrador>listar(){
+	public Iterable<Inmueble>listar(){
 		return service.findAll();
 	}
 	
 	@PostMapping("/crear")
-	public Administrador guardar(@RequestBody Administrador a) {
-		return service.save(a);
+	public Inmueble guardar(@RequestBody Inmueble inmueble) {
+		return service.save(inmueble);
 	}
 	
 	@GetMapping("/buscar/{id}")
-	public Optional<Administrador>administrador(@PathVariable int id){
+	public Optional<Inmueble>inmueble(@PathVariable int id){
 		return service.findById(id);
 	}
-	
+
 	@DeleteMapping("/eliminar/{id}")
 	public void eliminar(@PathVariable int id) {
 		service.deleteById(id);
 	}
 	
 	@PutMapping("/actualizar")
-	public Administrador actualizar(@RequestBody Administrador admin) {
-		return service.save(admin);
+	public Inmueble actualizar(@RequestBody Inmueble i) {
+		return service.save(i);
 	}
 	
 	

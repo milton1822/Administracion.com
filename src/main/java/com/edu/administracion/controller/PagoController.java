@@ -12,42 +12,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.edu.administracion.interfaces.IAdministrador;
-import com.edu.administracion.modelo.Administrador;
-
+import com.edu.administracion.interfaces.IPago;
+import com.edu.administracion.modelo.Pago;
 
 @RestController
-@RequestMapping("/administrador")
-public class AdministradorController {
+@RequestMapping("/pago")
+public class PagoController {
 	
 	@Autowired
-	private IAdministrador service;
-	
-	
+	private IPago service;
+
 	@GetMapping("/listar")
-	public Iterable<Administrador>listar(){
+	public Iterable<Pago>listar(){
 		return service.findAll();
 	}
 	
 	@PostMapping("/crear")
-	public Administrador guardar(@RequestBody Administrador a) {
-		return service.save(a);
+	public Pago guardar(@RequestBody Pago pago) {
+		return service.save(pago);
 	}
 	
 	@GetMapping("/buscar/{id}")
-	public Optional<Administrador>administrador(@PathVariable int id){
+	public Optional<Pago>pago(@PathVariable int id){
 		return service.findById(id);
 	}
-	
+
 	@DeleteMapping("/eliminar/{id}")
 	public void eliminar(@PathVariable int id) {
 		service.deleteById(id);
 	}
 	
 	@PutMapping("/actualizar")
-	public Administrador actualizar(@RequestBody Administrador admin) {
-		return service.save(admin);
+	public Pago actualizar(@RequestBody Pago p) {
+		return service.save(p);
 	}
-	
 	
 }

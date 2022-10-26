@@ -42,7 +42,7 @@ public class ServicePropietario implements ISPropietario{
 	}
 
 	@Override
-	public Propietario buscarxId(int id) {
+	public Propietario buscarId(int id) {
 		return data.findById(id).get();
 	}
 
