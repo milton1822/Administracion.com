@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -25,100 +26,69 @@ public class Inmueble {
 	private String numero_inmueble;
 	@Column(name="bloque")
 	private String bloque;
-	@Column(name="idpropietario", insertable = false, updatable = false,nullable = false)
-	private Integer idpropietario;
 	
+	
+	 @JsonIgnore
+	 @OneToMany(mappedBy="inmueble", cascade = CascadeType.ALL)
+	   private List<Pago>pagolist;
+	
+	/*
 	@OneToMany(mappedBy = "inmueble", cascade = CascadeType.ALL)
 	private List<Pago>pagos;
-	
-	
-	@ManyToOne(cascade = CascadeType.ALL, optional = false)
-	@JoinColumn(name="idpropietario")
-	@JsonProperty(access = Access.WRITE_ONLY)
+	*/
+	/*
+	@ManyToOne//(cascade = CascadeType.ALL, optional = false)
+    // @JoinColumn(name="idpersona")
+	//@JsonProperty(access = Access.WRITE_ONLY)
 	private Propietario propietario;
-
-
-	public Inmueble(int idinmueble, String numero_inmueble, String bloque, Integer idpropietario, List<Pago> pagos,
-			Propietario propietario) {
+		*/
+	public Inmueble(int idinmueble, String numero_inmueble, String bloque) {
 		super();
 		this.idinmueble = idinmueble;
 		this.numero_inmueble = numero_inmueble;
 		this.bloque = bloque;
-		this.idpropietario = idpropietario;
-		this.pagos = pagos;
-		this.propietario = propietario;
 	}
-
 
 	public Inmueble() {
 		super();
 	}
 
-
 	public int getIdinmueble() {
 		return idinmueble;
 	}
-
 
 	public void setIdinmueble(int idinmueble) {
 		this.idinmueble = idinmueble;
 	}
 
-
 	public String getNumero_inmueble() {
 		return numero_inmueble;
 	}
-
 
 	public void setNumero_inmueble(String numero_inmueble) {
 		this.numero_inmueble = numero_inmueble;
 	}
 
-
 	public String getBloque() {
 		return bloque;
 	}
-
 
 	public void setBloque(String bloque) {
 		this.bloque = bloque;
 	}
 
-
-	public Integer getIdpropietario() {
-		return idpropietario;
+	public List<Pago> getPagolist() {
+		return pagolist;
 	}
 
-
-	public void setIdpropietario(Integer idpropietario) {
-		this.idpropietario = idpropietario;
+	public void setPagolist(List<Pago> pagolist) {
+		this.pagolist = pagolist;
 	}
-
-
-	public List<Pago> getPagos() {
-		return pagos;
-	}
-
-
-	public void setPagos(List<Pago> pagos) {
-		this.pagos = pagos;
-	}
-
-
-	public Propietario getPropietario() {
-		return propietario;
-	}
-
-
-	public void setPropietario(Propietario propietario) {
-		this.propietario = propietario;
-	}
-
 
 	@Override
 	public String toString() {
 		return "Inmueble [idinmueble=" + idinmueble + ", numero_inmueble=" + numero_inmueble + ", bloque=" + bloque
-				+ ", idpropietario=" + idpropietario + ", pagos=" + pagos + ", propietario=" + propietario + "]";
+				+ ", pagolist=" + pagolist + "]";
 	}
 
 	

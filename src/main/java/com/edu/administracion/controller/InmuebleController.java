@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.edu.administracion.interfaces.I_Inmueble;
 import com.edu.administracion.modelo.Inmueble;
+import com.edu.administracion.modelo.Propietario;
 
 @RestController
 @RequestMapping("/inmueble")

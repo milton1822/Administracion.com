@@ -1,5 +1,6 @@
 package com.edu.administracion.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,8 @@ import com.edu.administracion.modelo.Empleado;
 
 @RestController
 @RequestMapping("/empleado")
-@CrossOrigin(origins = "*" , methods = {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT,RequestMethod.DELETE})
+//@CrossOrigin(origins = "*" , methods = {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT,RequestMethod.DELETE})
+@CrossOrigin(origins = "http://localhost:4200/")
 public class EmpleadoController {
 
 	@Autowired
@@ -27,6 +29,7 @@ public class EmpleadoController {
 	
 	@GetMapping("/listar")
 	public Iterable<Empleado>listar(){
+		//List<Empleado> listaempleados = service.findAll();
 		return service.findAll();
 	}
 	
